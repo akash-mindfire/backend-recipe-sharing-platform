@@ -4,6 +4,7 @@ import expressAsyncHandler from "express-async-handler";
 import { validationResult } from "express-validator";
 import createHttpError from "http-errors";
 import { userLogin, createUser } from "../helper/validations/user";
+import { createRecipe } from "../helper/validations/recipe";
 
 export const validate = (validationName: string): any[] => {
   switch (validationName) {
@@ -12,6 +13,9 @@ export const validate = (validationName: string): any[] => {
     }
     case "users:login": {
       return [userLogin];
+    }
+    case "recipe:create": {
+      return [createRecipe];
     }
     default:
       return [];
