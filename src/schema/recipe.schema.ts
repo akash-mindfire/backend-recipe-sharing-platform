@@ -12,7 +12,7 @@ export interface Direction {
 }
 
 export interface Review {
-  _id: number; // Consider using ObjectId if you plan to reference users
+  _id: string; // Consider using ObjectId if you plan to reference users
   userName: string;
   rating: number;
   review_message: string;
@@ -46,13 +46,16 @@ const DirectionSchema = new Schema<Direction>({
   desc: { type: String, required: true },
 });
 
-const ReviewSchema = new Schema<Review>({
-  _id: { type: Number, required: true },
-  userName: { type: String, required: true },
-  rating: { type: Number, required: true, min: 0, max: 5 },
-  review_message: { type: String, required: true },
-  image: { type: String, required: true }, // Optional if reviews can have no image
-});
+const ReviewSchema = new Schema<Review>(
+  {
+    _id: { type: String, required: true },
+    userName: { type: String, required: true },
+    rating: { type: Number, required: true, min: 0, max: 5 },
+    review_message: { type: String, required: true },
+    image: { type: String, required: true }, // Optional if reviews can have no image
+  },
+  { timestamps: true }
+);
 
 // Main recipe schema
 const RecipeSchema = new Schema<IRecipe>(

@@ -10,7 +10,9 @@ import { loadConfig } from "./src/helper/config";
 import authRoutes from "./src/routes/auth.route";
 import recipeRoutes from "./src/routes/recipe.route";
 import categoryRoutes from "./src/routes/category.routes";
-
+import reviewRoutes from "./src/routes/review.route";
+import cartRoutes from "./src/routes/cart.route";
+import homeRoutes from "./src/routes/home.route";
 loadConfig();
 
 declare global {
@@ -55,7 +57,9 @@ const initApp = async (): Promise<void> => {
   router.use("/auth", authRoutes);
   router.use("/recipelist", recipeRoutes);
   router.use("/category", categoryRoutes);
-  // router.use("/review",reviewRoutes);
+  router.use("/review", reviewRoutes);
+  router.use("/cart", cartRoutes);
+  router.use("/home", homeRoutes);
 
   //   app.use(errorHandler);
 

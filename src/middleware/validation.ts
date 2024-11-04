@@ -5,6 +5,7 @@ import { validationResult } from "express-validator";
 import createHttpError from "http-errors";
 import { userLogin, createUser } from "../helper/validations/user";
 import { createRecipe } from "../helper/validations/recipe";
+import { reviewRecipe } from "../helper/validations/review";
 
 export const validate = (validationName: string): any[] => {
   switch (validationName) {
@@ -16,6 +17,9 @@ export const validate = (validationName: string): any[] => {
     }
     case "recipe:create": {
       return [createRecipe];
+    }
+    case "recipe:review":{
+      return[reviewRecipe];
     }
     default:
       return [];
