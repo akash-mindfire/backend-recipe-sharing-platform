@@ -26,9 +26,11 @@ export const getAllHomepageData = async (
 
     const combinedResponse = {
       carousel: homepageRecipes,
-      trending: trendingRecipes,
-      mostViewed: mostViewedRecipes,
-      curatedCollection: curatedCollections,
+      data: [
+        { title: "Trending Recipes", data: trendingRecipes },
+        { title: "Most Viewed Recipe", data: mostViewedRecipes },
+        { title: "Curatted Collections", data: curatedCollections },
+      ],
     };
 
     // Combine the data into a single response object

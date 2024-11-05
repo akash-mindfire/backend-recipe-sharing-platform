@@ -5,7 +5,6 @@ import {
   createCategory,
   getCategory,
 } from "../controllers/category.controller";
-
 const router = express.Router();
 
 router.post(

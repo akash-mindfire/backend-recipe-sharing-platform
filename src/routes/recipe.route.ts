@@ -5,6 +5,7 @@ import {
   createRecipe,
   getRecipes,
   getSearchRecipe,
+  getRecipeByCategory,
 } from "../controllers/recipe.controller";
 import { upload } from "../middleware/multer";
 
@@ -19,5 +20,10 @@ router.post(
 );
 router.get("/getrecipe", expressAsyncHandler(getRecipes));
 router.get("/getrecipe/search/:key", expressAsyncHandler(getSearchRecipe));
-
+router.get(
+  "/getrecipe/:id",
+  //   validate("users:login"),
+  //   catchError,
+  expressAsyncHandler(getRecipeByCategory)
+);
 export default router;
