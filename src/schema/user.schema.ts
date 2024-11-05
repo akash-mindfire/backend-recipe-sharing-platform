@@ -8,11 +8,12 @@ export enum UserRole {
 
 const Schema = mongoose.Schema;
 
-export interface IUser extends BaseSchema {   
+export interface IUser extends BaseSchema {
   name: string;
   email: string;
   password: string;
   role: UserRole;
+  favourite: string[];
 }
 
 const UserSchema = new Schema<IUser>(
@@ -21,6 +22,7 @@ const UserSchema = new Schema<IUser>(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     role: { type: String, enum: UserRole, default: UserRole.USER },
+    favourite: { type: [String], required: true },
   },
   { timestamps: true }
 );

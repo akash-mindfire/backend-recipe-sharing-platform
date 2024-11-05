@@ -88,3 +88,24 @@ export const getRecipes = async (
       .json({ success: false, message: "Failed to fetch recipes" });
   }
 };
+export const getSearchRecipe = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    let data = await Recipe.find({
+      $or: [{ recipe_title: { $regex: req.params.key, $options: "i" } }],
+    });
+    res.json(createResponse(data, "Fetched all recipes successfully"));
+  } catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to fetch recipes" });
+  }
+};
+export const getRecipeByCategory = async (req: Request, res: Response) => {
+  let { id } = req.params;
+  console.log(id, "id");
+  const recipes = await Recipe.find({ categoryId: id }); // Fetch all recipes
+  res.json(createResponse(recipes, "Fetched all recipes successfully"));
+};
