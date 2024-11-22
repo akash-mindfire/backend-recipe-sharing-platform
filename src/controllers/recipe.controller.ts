@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import Recipe from "../schema/recipe.schema";
 import { createResponse } from "../helper/response";
+import Category from "../schema/category.schema";
 import { IRecipe } from "../schema/recipe.schema";
 import fs from "fs";
 import cloudinary from "cloudinary";
@@ -107,5 +108,10 @@ export const getRecipeByCategory = async (req: Request, res: Response) => {
   let { id } = req.params;
   console.log(id, "id");
   const recipes = await Recipe.find({ categoryId: id }); // Fetch all recipes
-  res.json(createResponse(recipes, "Fetched all recipes successfully"));
+  const category_name = await Category.find({ _id: id });
+  const data = {
+    recipes: recipes,
+    category_name: category_name[0].category_name,
+  };
+  res.json(createResponse(data, "Fetched all recipes successfully"));
 };

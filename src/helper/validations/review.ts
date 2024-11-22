@@ -11,10 +11,6 @@ export const reviewRecipe = checkExact([
     .isLength({ min: 2 })
     .withMessage("Recipe Id must be at least 2 characters long"),
 
-  body("review_message")
-    .exists({ checkFalsy: true })
-    .withMessage("Review message is required"),
-
   body("user_id")
     .exists({ checkFalsy: true })
     .withMessage("User must logged in"),

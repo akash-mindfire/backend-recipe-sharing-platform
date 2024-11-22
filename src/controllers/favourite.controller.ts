@@ -3,7 +3,10 @@ import Recipe from "../schema/recipe.schema";
 import { createResponse } from "../helper/response";
 import User, { IUser } from "../schema/user.schema";
 
-export const addCart = async (req: Request, res: Response): Promise<void> => {
+export const addFavourite = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   let { recipe_id, userId } = req.body;
   try {
     const user: any = await User.findById(userId);
@@ -26,7 +29,10 @@ export const addCart = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-export const getCart = async (req: Request, res: Response): Promise<void> => {
+export const getFavourite = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   let { id } = req.params;
   try {
     const user: any = await User.findById(id);
