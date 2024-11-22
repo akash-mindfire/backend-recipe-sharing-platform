@@ -11,8 +11,9 @@ import authRoutes from "./src/routes/auth.route";
 import recipeRoutes from "./src/routes/recipe.route";
 import categoryRoutes from "./src/routes/category.routes";
 import reviewRoutes from "./src/routes/review.route";
-import cartRoutes from "./src/routes/cart.route";
+import favouriteRoutes from "./src/routes/favourite.route";
 import homeRoutes from "./src/routes/home.route";
+import recipeDetailRoutes from "./src/routes/recipeDetail.route";
 loadConfig();
 
 declare global {
@@ -58,9 +59,9 @@ const initApp = async (): Promise<void> => {
   router.use("/recipelist", recipeRoutes);
   router.use("/category", categoryRoutes);
   router.use("/review", reviewRoutes);
-  router.use("/cart", cartRoutes);
+  router.use("/favourite", favouriteRoutes);
   router.use("/home", homeRoutes);
-
+  router.use("/recipeDetail", recipeDetailRoutes);
   //   app.use(errorHandler);
 
   server.listen(port, () =>

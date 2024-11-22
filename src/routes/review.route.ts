@@ -1,7 +1,7 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import { validate } from "../middleware/validation";
-import { addReview } from "../controllers/review.controller";
+import { addReview, editReview } from "../controllers/review.controller";
 
 const router = express.Router();
 
@@ -11,5 +11,10 @@ router.post(
   //catchError,
   expressAsyncHandler(addReview)
 );
+router.put(
+  "/editreview",
+  validate("recipe:editreview"),
+  expressAsyncHandler(editReview)
+)
 
 export default router;
